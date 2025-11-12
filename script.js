@@ -1,6 +1,6 @@
 const sections = document.querySelectorAll(".section");
+const fadeItems = document.querySelectorAll(".skills div, .timeline-item");
 
-// Fonction pour vérifier si une section est visible à l'écran
 const isInViewport = (element) => {
   const rect = element.getBoundingClientRect();
   return (
@@ -9,17 +9,22 @@ const isInViewport = (element) => {
   );
 };
 
-// Fonction pour ajouter la classe 'visible' aux sections visibles
 const revealSections = () => {
   sections.forEach((section) => {
     if (isInViewport(section)) {
       section.classList.add("visible");
     }
   });
+
+  // Animation cascade pour skills & timeline
+  fadeItems.forEach((item, index) => {
+    if (isInViewport(item)) {
+      setTimeout(() => {
+        item.classList.add("visible");
+      }, index * 150); // délai progressif
+    }
+  });
 };
 
-// Événement au scroll
 window.addEventListener("scroll", revealSections);
-
-// Appel initial pour les sections déjà visibles
 revealSections();

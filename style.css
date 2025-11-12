@@ -93,10 +93,6 @@ body {
   background: linear-gradient(145deg, #f9f9f9, #e3e3e3);
   padding: 4rem 2rem;
 }
-.hero .logo {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
 .hero h2 {
   font-family: var(--title-font);
   font-weight: 700;
@@ -113,10 +109,21 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  animation: bounce 2s infinite;
 }
 .btn:hover {
   background-color: var(--primary);
   transform: translateY(-2px);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 /* === Sections === */
@@ -126,7 +133,8 @@ body {
   padding: 3rem 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease,
+    opacity 0.6s;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -155,11 +163,18 @@ body {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.skills div.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 .skills div:hover {
   background-color: #8d8d8d;
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .skills h3 {
   font-family: var(--title-font);
@@ -177,11 +192,19 @@ body {
   border-left: 4px solid var(--secondary);
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  transition: 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease,
+    opacity 0.6s;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 .timeline-item:hover {
-  transform: translateX(5px);
+  transform: translateX(5px) scale(1.02);
   background-color: #f0f0f0;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 .timeline-item h3 {
   font-family: var(--title-font);
